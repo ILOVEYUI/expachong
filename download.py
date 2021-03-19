@@ -11,7 +11,7 @@ def wenjianjia(topic_l):
     for topic in topic_l:
         if not os.path.exists(topic):
             os.mkdir(topic)
-            return topic
+        return topic
 
 
 def qingqiu(url):
@@ -31,10 +31,11 @@ def qingqiu(url):
 def download(data, topic):
     """下载图片"""
     time.sleep(random.uniform(1, 3))  # 随机休眠1-3秒
+    print(data)
     img_down = requests.get(url=data, headers=setting_f.headers, verify=False).content  # 二进制形式下载图片
     img_name = data.split('/')[-1]  # 以图片名最后作为文件名
     imgPath = './' + topic + '/' + img_name  # 图片路径
     # 将图片数据写入文件
     with open(imgPath, 'wb') as fp:
         fp.write(img_down)
-        print(img_name + "下载成功！！！", end='')
+        print(img_name + "下载成功！！！")
